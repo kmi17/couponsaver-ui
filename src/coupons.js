@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
 function Coupon() {
@@ -7,15 +7,21 @@ function Coupon() {
   const [expiration, setExpiration] = useState();
   const [code, setCode] = useState("");
   const [couponList, setCouponList] = useState([]);
+
+ 
   useEffect(() => {
+
     axios.get("http://localhost:8080/api/coupons").then((response) => {
       console.log(response.data);
       setCouponList(response.data);
     });
+
   }, []);
+
     function handleSubmit(e) {
       e.preventDefault();
         console.log(companyName);
+
         const reqBody = {
           "company_name": companyName,
           "valid_from": validFrom,
@@ -29,7 +35,54 @@ function Coupon() {
     }
   return (
     <div className="Coupon">
-      <h1>Coupon Saver</h1>
+      
+      <h1>Coupon Saver</h1> 
+      <div className="form">
+        <h3>Add Your Coupon</h3>    
+        <form onSubmit={handleSubmit}>
+  
+        <div className="input-fields">
+          <label htmlFor="company_name">Company Name </label>
+          <input
+            type="text"
+            name="company_name"
+            
+            onChange={(event) => setCompanyName(event.target.value)}
+            autoFocus ></input>
+        </div>
+
+        <div className="input-fields">
+          <label htmlFor="valid_from"> Valid From </label>
+          <input
+            type="date"
+            name="valid_from"
+            onChange={(event) => setValidFrom(event.target.value)}
+          ></input>
+          </div>
+
+        <div className="input-fields">
+          <label htmlFor="expires_on"> Expiration </label>
+          <input
+            type="date"
+            name="expires_on"
+            onChange={(event) => setExpiration(event.target.value)}
+          ></input>
+        </div>
+
+        <div className="input-fields">
+          <label htmlFor="code"> Code </label>
+          <input
+            type="text"
+            name="code"
+            onChange={(event) => setCode(event.target.value)}
+          ></input>
+        </div>
+     
+        <button type="submit" className="submit-button">Add Coupon</button>
+        
+        </form>
+      </div>
+
       <div>
         <h3>Your Coupons</h3>
        
@@ -38,40 +91,7 @@ function Coupon() {
           })}
        
       </div>
-      <form onSubmit={handleSubmit}>
-        <hr></hr>
-        <h3>Add Your Coupon</h3>
-        <label>Company Name </label>
-        <input
-          type="text"
-          name="company_name"
-          onChange={(event) => setCompanyName(event.target.value)}
-        ></input>
 
-        <label> Valid From </label>
-        <input
-          type="date"
-          name="valid_from"
-          onChange={(event) => setValidFrom(event.target.value)}
-        ></input>
-
-        <label> Expiration </label>
-        <input
-          type="date"
-          name="expires_on"
-          onChange={(event) => setExpiration(event.target.value)}
-        ></input>
-
-        <label> Code </label>
-        <input
-          type="text"
-          name="code"
-          onChange={(event) => setCode(event.target.value)}
-        ></input>
-        <br></br>
-        <br></br>
-        <button type="submit">Add Coupon</button>
-      </form>
     </div>
   );
 }

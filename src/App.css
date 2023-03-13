@@ -1,38 +1,61 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.Coupon {
   text-align: center;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  padding: 20px 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h3 {
+  padding: 20px 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.form {
+
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.input-fields {
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #80D0C7;
+  width: 200px;
 }
+
+label {
+  font-size: 11px;
+  margin-right: 10px;
+}
+
+
+.submit-button {
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: bold;
+  width: 200px;
+}
+
